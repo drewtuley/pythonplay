@@ -15,12 +15,10 @@ win=1;
 lose=2;
 
 def setup_doors():
-    #print('doors to automatic');
     while doors.count(win) <1: 
         doors.append(win);
     while doors.count(lose) <2: 
         doors.append(lose);
-    #sprint(doors);
     
 def play(tries, change):
     """ 
@@ -32,11 +30,10 @@ def play(tries, change):
     while loop < tries:
         setup_doors();
         door = choice(doors);
-        #print ('I picked door {}'.format(door));
+
         doors.remove(lose);
         # you're now given the chance to change your choice
         if change:
-            #print ('i shall change');
             door = choice(doors);
         if door == win:
             wins += 1;
