@@ -23,6 +23,10 @@ def setup_doors():
     #sprint(doors);
     
 def play(tries, change):
+    """ 
+    Play the Monty Hall game <tries> times and either <change> or not when 
+    given the choice.
+    """
     wins=0;
     loop=0;
     while loop < tries:
@@ -30,14 +34,14 @@ def play(tries, change):
         door = choice(doors);
         #print ('I picked door {}'.format(door));
         doors.remove(lose);
-
+        # you're now given the chance to change your choice
         if change:
             #print ('i shall change');
             door = choice(doors);
         if door == win:
             wins += 1;
         loop += 1;    
-    print ('I won {0} times by {1}'.format(wins, 'changing' if change else 'not changing' ));    
+    print ('I won {0} times ({1}%) by {2}'.format(wins, (wins*100/tries), 'changing' if change else 'not changing' ));    
 
 if __name__ == "__main__":
     seed();
