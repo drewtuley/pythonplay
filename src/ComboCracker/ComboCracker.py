@@ -19,7 +19,7 @@ if __name__ == "__main__":
     print ("Crack the combination");
     overall=[0,0,0];
     loop = 0;
-    while loop < 100:
+    while loop < 10000:
         print ('Round {}'.format(loop));
         results = [0,0,0]; 
         code = generate_code();
@@ -27,15 +27,15 @@ if __name__ == "__main__":
         # therefore the # of attempts will be code + 1
         results[0] = code+1;
 
-        # method #2 is to pick random numbers between 0000 and 9999 
+        # method #2 is to pick *unique* random numbers between 0000 and 9999 
         test = generate_code();
         attempts=1;
-        values_tried=[];
-        values_tried.append(test);
+        values_tried=[False]*10000;
+        values_tried[test] = True
         while test != code:
-            while test in values_tried:
+            while values_tried[test]:
                 test=generate_code();
-            values_tried.append(test);    
+            values_tried[test] = True;    
             attempts += 1;
         results[1] = attempts;    
 
@@ -49,7 +49,12 @@ if __name__ == "__main__":
                 test -= 9999;
             attempts += 1;    
         results[2] = attempts;    
-        winner = results.index(min(results));
-        overall[winner] += 1;
+        
+        winning_attempts = min(results);
+        
+        for method in 0,1,2:
+            if results[method] == winning_attempts:
+                overall[method] += 1;
+        
         loop += 1
     print (overall);
