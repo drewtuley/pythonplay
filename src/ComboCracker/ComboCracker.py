@@ -9,6 +9,7 @@ __author__="andrew.tuley"
 __date__ ="$01-Apr-2016 16:03:23$"
 
 import random
+import sys
 
 def generate_code():
     code = random.random() * 9999;
@@ -19,7 +20,11 @@ if __name__ == "__main__":
     print ("Crack the combination");
     overall=[0,0,0];
     loop = 0;
-    while loop < 10000:
+    maxloop = 10000;
+    if len(sys.argv) > 1:
+        maxloop = int(sys.argv[1])
+        
+    while loop < maxloop:
         print ('Round {}'.format(loop));
         results = [0,0,0]; 
         code = generate_code();
@@ -39,7 +44,7 @@ if __name__ == "__main__":
             attempts += 1;
         results[1] = attempts;    
 
-        # method #3 is start start at 0000 but jump in steps of 100
+        # method #3 is to start at 0000 but jump in steps of 100
         # wrapping over 9999
         test = 0;
         attempts=1;
@@ -51,10 +56,12 @@ if __name__ == "__main__":
         results[2] = attempts;    
         
         winning_attempts = min(results);
-        
-        for method in 0,1,2:
+        for method in range(3):
             if results[method] == winning_attempts:
                 overall[method] += 1;
         
         loop += 1
-    print (overall);
+        
+    for method in range(3):
+        print ('Method {0} succeeded {1} times'.format(method+1, overall[method]));
+    
