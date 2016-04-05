@@ -55,13 +55,21 @@ if __name__ == "__main__":
             attempts += 1;    
         results[2] = attempts;    
         
+        # locate the smallest # of attempts to solve
         winning_attempts = min(results);
+        winners = [];
         for method in range(3):
             if results[method] == winning_attempts:
-                overall[method] += 1;
-        
+                winners.append(method);
+        # divide the prize among the winning methods
+        try:
+            prize = 1 / len(winners);
+            for method in winners:
+                    overall[method] += prize;
+        except ZeroDivisionError:
+            print ('no winner');
         loop += 1
         
     for method in range(3):
-        print ('Method {0} succeeded {1} times'.format(method+1, overall[method]));
+        print ('Method {0} succeeded {1} times ({2:.2%})'.format(method+1, overall[method], (overall[method]/maxloop)));
     
