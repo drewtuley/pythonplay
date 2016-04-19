@@ -5,71 +5,74 @@
 # To change this template file, choose Tools | Templates
 # and open the template in the editor.
 
-__author__="andrew.tuley"
-__date__ ="$01-Apr-2016 16:03:23$"
-
 import random
 import sys
 
+__author__="andrew.tuley"
+__date__ ="$01-Apr-2016 16:03:23$"
+
+
 def generate_code():
-    code = random.random() * 9999;
-    return int(code);
+    """
+
+    :rtype: object
+    """
+    return int(random.random() * 9999)
     
     
 if __name__ == "__main__":
-    print ("Crack the combination");
-    overall=[0,0,0];
-    loop = 0;
-    maxloop = 10000;
+    print("Crack the combination")
+    overall = [0, 0, 0]
+    loop = 0
+    maxloop = 10000
     if len(sys.argv) > 1:
         maxloop = int(sys.argv[1])
         
     while loop < maxloop:
-        print ('Round {}'.format(loop));
-        results = [0,0,0]; 
-        code = generate_code();
+        print('Round {}'.format(loop))
+        results = [0, 0, 0]
+        code = generate_code()
         # method #1 start at 0000 and sequentially try to find it....
         # therefore the # of attempts will be code + 1
-        results[0] = code+1;
+        results[0] = code+1
 
         # method #2 is to pick *unique* random numbers between 0000 and 9999 
-        test = generate_code();
-        attempts=1;
-        values_tried=[False]*10000;
+        test = generate_code()
+        attempts = 1
+        values_tried = [False]*10000
         values_tried[test] = True
         while test != code:
             while values_tried[test]:
-                test=generate_code();
-            values_tried[test] = True;    
-            attempts += 1;
-        results[1] = attempts;    
+                test = generate_code()
+            values_tried[test] = True
+            attempts += 1
+        results[1] = attempts
 
         # method #3 is to start at 0000 but jump in steps of 100
         # wrapping over 9999
-        test = 0;
-        attempts=1;
+        test = 0
+        attempts = 1
         while test != code:
-            test += 100;
+            test += 100
             if test > 9999:
-                test -= 9999;
-            attempts += 1;    
-        results[2] = attempts;    
+                test -= 9999
+            attempts += 1
+        results[2] = attempts
         
         # locate the smallest # of attempts to solve
-        winning_attempts = min(results);
-        winners = [];
+        winning_attempts = min(results)
+        winners = []
         for method in range(3):
             if results[method] == winning_attempts:
-                winners.append(method);
+                winners.append(method)
         # divide the prize among the winning methods
         try:
-            prize = 1 / len(winners);
+            prize = 1 / len(winners)
             for method in winners:
-                    overall[method] += prize;
+                overall[method] += prize
         except ZeroDivisionError:
-            print ('no winner');
+            print('no winner')
         loop += 1
         
     for method in range(3):
-        print ('Method {0} succeeded {1} times ({2:.2%})'.format(method+1, overall[method], (overall[method]/maxloop)));
-    
+        print('Method {0} succeeded {1} times ({2:.2%})'.format(method+1, overall[method], (overall[method]/maxloop)))
