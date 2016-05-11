@@ -6,9 +6,8 @@
 # and open the template in the editor.
 from random import choice, seed
 
-__author__="andrew.tuley"
-__date__ ="$09-Mar-2016 13:25:39$"
-
+__author__ = "andrew.tuley"
+__date__ = "$09-Mar-2016 13:25:39$"
 
 doors = []
 win = 1
@@ -16,9 +15,9 @@ lose = 2
 
 
 def setup_doors():
-    while doors.count(win) <1: 
+    while doors.count(win) < 1:
         doors.append(win)
-    while doors.count(lose) <2: 
+    while doors.count(lose) < 2:
         doors.append(lose)
 
 
@@ -26,6 +25,8 @@ def play(tries, change):
     """ 
     Play the Monty Hall game <tries> times and either <change> or not when 
     given the choice.
+    :param change: object
+    :type tries: Number
     """
     wins = 0
     loop = 0
@@ -39,11 +40,14 @@ def play(tries, change):
             door = choice(doors)
         if door == win:
             wins += 1
-        loop += 1    
-    print ('I won {0:,} times out of {3:,} ({1:.2%}) by {2}'.format(wins, (wins/tries), 'changing' if change else 'not changing', tries))
+        loop += 1
+    print('I won {0:,} times out of {3:,} ({1:.2%}) by {2}'.format(wins, (wins / tries),
+                                                                            'changing' if change else 'not changing',
+                                                                            tries))
+
 
 if __name__ == "__main__":
     seed()
-    
+
     play(1000000, True)
     play(1000000, False)
