@@ -1226,7 +1226,6 @@ adieu
 adieus
 adieux
 adigranth
-adiós
 adipic
 adipocere
 adipose
@@ -9336,6 +9335,8 @@ befriends
 befringe
 befringed
 befringes
+befringing
+befuddle
 befuddled
 befuddles
 befuddling
@@ -10063,8 +10064,6 @@ betides
 betiding
 betime
 betimes
-bÍtise
-bÍtises
 betoken
 betokened
 betokening
@@ -16014,7 +16013,6 @@ carefuller
 carefully
 careless
 carelessly
-carÍme
 carer
 carers
 cares
@@ -25321,11 +25319,7 @@ cupules
 cur
 curability
 curable
-curaÁao
-curaÁaos
 curacies
-curaÁoa
-curaÁoas
 curacy
 curara
 curare
@@ -28080,7 +28074,6 @@ departures
 depasture
 depastured
 depastures
-depÍche
 depeinct
 depend
 dependable
@@ -35766,10 +35759,8 @@ enucleated
 enucleates
 enumerate
 enumerated
-enumerator
 enumerates
-enumeration
-enumerations
+enumerator
 enunciable
 enunciate
 enunciated
@@ -38375,8 +38366,6 @@ facility
 facing
 facings
 facinorous
-faÁonne
-faÁonnes
 facsimile
 facsimiled
 facsimiles
@@ -39625,9 +39614,7 @@ fetch
 fetched
 fetches
 fetching
-fÍte
 feted
-fÍtes
 fetial
 fetich
 fetiches
@@ -41834,8 +41821,6 @@ forborne
 forbs
 forby
 forbye
-forÁat
-forÁats
 force
 forced
 forcedly
@@ -44272,8 +44257,6 @@ garbology
 garbos
 garbs
 garbure
-garÁon
-garÁons
 garda
 gardai
 gardant
@@ -61723,8 +61706,6 @@ limacels
 limaceous
 limaciform
 limacine
-limaÁon
-limaÁons
 limail
 limas
 limation
@@ -69422,8 +69403,6 @@ mounseers
 mount
 mountain
 mountained
-mountaineer
-mountaineers
 mountains
 mountant
 mountants
@@ -92182,10 +92161,6 @@ revetments
 revets
 revetted
 revetting
-rÍveur
-rÍveurs
-rÍveuse
-rÍveuses
 revictual
 revictuals
 revie
@@ -103676,8 +103651,6 @@ soundness
 soundproof
 sounds
 soup
-soupÁon
-soupÁons
 souper
 soupers
 soupier
@@ -112590,7 +112563,6 @@ tetchiest
 tetchily
 tetchiness
 tetchy
-tÍte
 tether
 tethered
 tethering
