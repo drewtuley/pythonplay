@@ -35,7 +35,7 @@ def calc_pval(str):
 
 anaprimes = {}
 anaprimes_rev = {}
-with open('words.txt') as fd:
+with open('20k.txt') as fd:
     complete = False
     while not complete:
         try:
@@ -60,40 +60,68 @@ with open('words.txt') as fd:
 print('Processed {} anaprimes'.format(len(anaprimes)))
 
 
-if -1 in anaprimes_rev:
+try:
     anaprimes_rev.pop(-1)
+except:
+    pass
+
 sorted_keys = list(anaprimes_rev.keys())
 sorted_keys.sort()
 
-source = ['treasure']
-product = 1
-for word in [s.strip().lower() for s in source]:
-    try:
-        pval = anaprimes[word]
-    except:
-        pval = calc_pval(word)
-    product *= pval
+
+top_ten = dict()
+for key in anaprimes_rev:
+    words = anaprimes_rev[key]
+    len_words = len(words)
+    if len(top_ten) > 0:
+        if len_words > max(top_ten.keys()):
+            top_ten[len_words] = words
+    else:
+        top_ten[len_words] = words
+
+    if len(top_ten) > 5:
+        min_idx = min(top_ten.keys())
+        del top_ten[min_idx]
+
+for count in top_ten:
+    print('#{} words:{}'.format(count, top_ten[count]))
+
+
+source = ['ian', 'malone']
+
+
+def calculate_total_product(source):
+    product = 1
+    for word in [s.strip().lower() for s in source]:
+        try:
+            pval = anaprimes[word]
+        except:
+            pval = calc_pval(word)
+        product *= pval
+    return product
+
+product = calculate_total_product(source)
 
 print('product for {} is {}'.format(source, product))
 
 try:
     anagrams = anaprimes_rev[product]
-    print('single word anagrams={}'.format(anagrams))
-except:
+    if len(anagrams) > 1:
+        print('single word anagrams={}'.format(anagrams))
+except KeyError:
     print('no single word anagrams')
 
+# find those keys that are factors of our target product
+matching_prime_factors = [k for k in sorted_keys if product % k == 0]
 
-matching_prime_products = list()
-for k in sorted_keys:
-    if product % k == 0:
-        matching_prime_products.append(k)
+print('Found {} matching prime factors'.format(len(matching_prime_factors)))
 
-print('Found {} matching prime products'.format(len(matching_prime_products)))
-
-for r in combinations(matching_prime_products, 2):
+count = 0
+for r in combinations(matching_prime_factors, 3):
     if reduce(operator.mul, r, 1) == product:
         words = ''
         for factor in r:
-            words = '{} w:{}[{}]'.format(words, anaprimes_rev[factor], factor)
-        print(words)
+            words = 'w:{}[{}] {}'.format(anaprimes_rev[factor], factor, words)
+        print('{}: {}'.format(count,words))
+        count += 1
 
