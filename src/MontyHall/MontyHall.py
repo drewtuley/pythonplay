@@ -42,8 +42,8 @@ def play(tries, change):
             wins += 1
         loop += 1
     print('I won {0:,} times out of {3:,} ({1:.2%}) by {2}'.format(wins, (wins / tries),
-                                                                            'changing' if change else 'not changing',
-                                                                            tries))
+                                                                   'changing' if change else 'not changing',
+                                                                   tries))
 
 
 if __name__ == "__main__":

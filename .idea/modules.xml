@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/../dump1090curses/.idea/dump1090curses.iml" filepath="$PROJECT_DIR$/../dump1090curses/.idea/dump1090curses.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../mysite/.idea/mysite.iml" filepath="$PROJECT_DIR$/../mysite/.idea/mysite.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/pythonplay.iml" filepath="$PROJECT_DIR$/.idea/pythonplay.iml" />
+    </modules>
+  </component>
+</project>
