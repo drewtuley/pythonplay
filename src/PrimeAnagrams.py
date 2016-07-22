@@ -37,21 +37,24 @@ anaprimes = {}
 anaprimes_rev = {}
 with open('20k.txt') as fd:
     complete = False
+    loaded_words = []
     while not complete:
         try:
             for line in fd:
                 word = line.strip()
-                prime = calc_pval(word)
-                if prime != 0:
-                    # print('{} {}'.format(word, prime))
-                    anaprimes[word] = prime
-                    if prime in anaprimes_rev:
-                        words = anaprimes_rev[prime]
-                        words.append(word)
-                    else:
-                        words = list()
-                        words.append(word)
-                    anaprimes_rev[prime] = words
+                if word not in loaded_words:
+                    loaded_words.append(word)
+                    prime = calc_pval(word)
+                    if prime != 0:
+                        # print('{} {}'.format(word, prime))
+                        anaprimes[word] = prime
+                        if prime in anaprimes_rev:
+                            words = anaprimes_rev[prime]
+                            words.append(word)
+                        else:
+                            words = list()
+                            words.append(word)
+                        anaprimes_rev[prime] = words
         except UnicodeDecodeError as err:
             print('error {} '.format(err))
             pass
@@ -87,7 +90,7 @@ for count in top_ten:
     print('#{} words:{}'.format(count, top_ten[count]))
 
 
-source = ['ian', 'malone']
+source = ['alex','cartwright']
 
 
 def calculate_total_product(source):
