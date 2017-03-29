@@ -10,8 +10,9 @@ CHILDREN = 100
 def calculate_difference(s1, s2):
     idx = 0
     dx = 0
-    while idx < len(s1):
-        if ord(s1[idx]) == ord(s2[idx]):
+    l = len(s1)
+    while idx < l:
+        if s1[idx] == s2[idx]:
             dx += 1
         idx += 1
     return dx
