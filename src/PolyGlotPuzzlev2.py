@@ -11,6 +11,7 @@ italian = 1
 spanish = 1 << 1
 mandarin = 1 << 2
 all_languages = italian | spanish | mandarin
+groups = [(italian, 90), (spanish, 80), (mandarin, 75)]
 
 
 def set_random_language(pop, language, speakers):
@@ -25,9 +26,8 @@ if len(sys.argv) > 1:
 
 for attempt in range(1000000):
     people = [(_, 0) for _ in range(100)]
-    set_random_language(people, italian, 90)
-    set_random_language(people, spanish, 80)
-    set_random_language(people, mandarin, 75)
+    for group in groups:
+        set_random_language(people, group[0], group[1])
 
     all_three = 0
     none = 0
