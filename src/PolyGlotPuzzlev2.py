@@ -15,8 +15,7 @@ all_languages = italian | spanish | mandarin
 
 def set_random_language(pop, language, speakers):
     for v in random.sample(pop, speakers):
-        t = (v[0], v[1] | language)
-        people[v[0]] = t
+        people[v[0]] = (v[0], v[1] | language)
 
 
 best = 100
