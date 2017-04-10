@@ -8,8 +8,8 @@ import random
 import sys
 
 italian = 1
-spanish = 2
-mandarin = 4
+spanish = 1 << 1
+mandarin = 1 << 2
 all_languages = italian | spanish | mandarin
 
 
