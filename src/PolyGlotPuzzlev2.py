@@ -1,15 +1,20 @@
-from random import sample
+# 100 people at a party, 90 speak Italian, 80 speak Spanish and 75 Mandarin.
+# What's the least number of people that speak all three....
+#
+# I imagine it should be a 'simple' maths/Venn type solution, but i'm going to try a brute force approach
+# by randomly assigning each of the 3 languages to the correct proportions.
+
+import random
 import sys
 
 italian = 1
 spanish = 2
 mandarin = 4
-all = italian | spanish | mandarin
+all_languages = italian | spanish | mandarin
 
 
 def set_random_language(pop, language, speakers):
-    samp = sample(pop, speakers)
-    for v in samp:
+    for v in random.sample(pop, speakers):
         t = (v[0], v[1] | language)
         people[v[0]] = t
 
@@ -30,12 +35,12 @@ for attempt in range(1000000):
     for p in people:
         if p[1] == 0:
             none += 1
-        elif p[1] == all:
+        elif p[1] == all_languages:
             all_three += 1
     if none == 0 and all_three < best:
         best = all_three
     if best == 45:
-        print('Found on attempt ', attempt)
+        print('Found on attempt {0}'.format(attempt))
         exit(1)
         # print(all_three, none)
 print(best)
