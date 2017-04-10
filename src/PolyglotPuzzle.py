@@ -38,6 +38,10 @@ class PartyGoer:
     def has_all_three(self):
         return self.it and self.sp and self.ma
 
+    @property
+    def has_none(self):
+        return (not self.it and not self.sp and not self.ma)
+
     def show(self):
         print('Italian: {0} Spanish: {1} Mandarin: {2}'.format(self.it, self.sp, self.ma))
 
@@ -63,6 +67,7 @@ for attempt in range(0, 100000):
 
     stats = {'spanish': 0, 'italian': 0, 'mandarin': 0}
     all_three = 0
+    none = 0
     for x in range(0, 99):
         for stat in stats:
             if people[x].has_language(stat):
@@ -70,7 +75,10 @@ for attempt in range(0, 100000):
         # people[x].show()
         if people[x].has_all_three:
             all_three += 1
-    if all_three < best:
+        if people[x].has_none:
+            none += 1
+
+    if none == 0 and all_three < best:
         best = all_three
     #print('# with all three {0} - best {1}'.format(all_three, best))
     # for stat in stats:
