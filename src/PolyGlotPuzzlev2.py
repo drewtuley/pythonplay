@@ -1,4 +1,5 @@
 from random import sample
+import sys
 
 italian = 1
 spanish = 2
@@ -14,6 +15,10 @@ def set_random_language(pop, language, speakers):
 
 
 best = 100
+max_attempts = 1000000
+if len(sys.argv) > 1:
+    max_attempts = int(sys.argv[1])
+
 for attempt in range(1000000):
     people = [(_, 0) for _ in range(100)]
     set_random_language(people, italian, 90)
