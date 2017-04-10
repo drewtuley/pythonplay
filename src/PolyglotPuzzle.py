@@ -4,6 +4,7 @@
 # I imagine it should be a 'simple' maths/Venn type solution, but i'm going to try a brute force approach
 
 from random import choice
+import sys
 
 
 class PartyGoer:
@@ -54,9 +55,12 @@ def set_random_language(language, max_speakers):
             p.set_language(language)
             speakers += 1
 
+max_attempt = 1e4
+if len(sys.argv) > 1:
+    max_attempt=int(sys.argv[1])
 
 best = 100
-for attempt in range(0, 100000):
+for attempt in range(0, max_attempt):
     people = []
     for x in range(0, 99):
         people.append(PartyGoer())
