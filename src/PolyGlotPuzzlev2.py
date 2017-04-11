@@ -24,7 +24,7 @@ max_attempts = 1000000
 if len(sys.argv) > 1:
     max_attempts = int(sys.argv[1])
 
-for attempt in range(1000000):
+for attempt in range(max_attempts):
     people = [(_, 0) for _ in range(100)]
     for group in groups:
         set_random_language(people, group[0], group[1])
