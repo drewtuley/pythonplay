@@ -34,6 +34,7 @@ for attempt in range(max_attempts):
     for p in people:
         if p[1] == 0:
             none += 1
+            break
         elif p[1] == all_languages:
             all_three += 1
     if none == 0 and all_three < best:
@@ -41,5 +42,4 @@ for attempt in range(max_attempts):
     if best == 45:
         print('Found on attempt {0}'.format(attempt))
         exit(1)
-        # print(all_three, none)
 print(best)
