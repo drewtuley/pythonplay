@@ -41,7 +41,7 @@ def play(tries, change):
         if door == win:
             wins += 1
         loop += 1
-    print('I won {0:,} times out of {3:,} ({1:.2%}) by {2}'.format(wins, (wins / tries),
+    print('I won {0:,} times out of {3:,} ({1:.2%}) by {2}'.format(wins, (float(wins) / tries),
                                                                    'changing' if change else 'not changing',
                                                                    tries))
 
